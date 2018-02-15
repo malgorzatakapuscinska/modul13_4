@@ -1,6 +1,7 @@
 
 process.stdin.setEncoding('utf-8');
-var OSinfo = require('./OSinfo');
+var OSinfo = require('../modules/OSinfo');
+var time = require('../modules/time');
 
 process.stdin.on('readable', function() {
     var input = process.stdin.read();
@@ -19,10 +20,12 @@ process.stdin.on('readable', function() {
                 break;
             case '/sysOSinfo':
             	OSinfo.print();
+            	time.getUptime();
             	break;
             default:
                 process.stderr.write('Wrong instruction!\n');
         };
     }
 });
+
 
